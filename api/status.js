@@ -41,7 +41,7 @@ export default async function handler(req, res) {
       res.setHeader('Allow', 'GET, POST');
       return send(res, 405, { error: 'Method not allowed' });
     }
-    const expected = process.env.DELTAMAP_ADMIN_PASSWORD;
+    const expected = process.env.ADMIN_PASSWORD;
     const supplied = req.headers['x-admin-password'];
     if (!expected || typeof supplied !== 'string' || supplied !== expected) {
       return send(res, 401, { error: 'Невірний пароль адміністратора' });
